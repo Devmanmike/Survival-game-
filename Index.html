@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Zombie Survival</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="ui">
+  HP: <span id="hp">100</span><br>
+  STATUS: <span id="status">OUTSIDE</span>
+</div>
+
+<div id="buttons">
+  <button onclick="interact()">ENTER</button>
+  <button onclick="toggleBarricade()">BARRICADE</button>
+  <button onclick="toggleFullscreen()">FULLSCREEN</button>
+</div>
+
+<div id="joy">
+  <div id="stick"></div>
+</div>
+
+<canvas id="game"></canvas>
+
+<script src="game.js"></script>
+
+</body>
+</html>
