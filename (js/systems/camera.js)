@@ -1,0 +1,8 @@
+import { player } from "./player.js";
+
+export const cam = {x:0,y:0,smooth:0.08};
+
+export function updateCamera(){
+  cam.x += (player.x - innerWidth/2 - cam.x)*cam.smooth;
+  cam.y += (player.y - innerHeight/2 - cam.y)*cam.smooth;
+}
