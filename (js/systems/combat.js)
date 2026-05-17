@@ -1,0 +1,17 @@
+import { zombies } from "./zombies.js";
+import { player } from "./player.js";
+
+export function setupCombat(){
+
+  window.slashAttack = function(){
+    const range = 120;
+
+    for(const z of zombies){
+      let d = Math.hypot(z.x-player.x,z.y-player.y);
+
+      if(d < range){
+        z.hp -= 25;
+      }
+    }
+  };
+}
