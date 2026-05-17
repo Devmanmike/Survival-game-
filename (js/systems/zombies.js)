@@ -1,0 +1,21 @@
+import { player } from "./player.js";
+
+export const zombies = [];
+
+export function updateZombies(){
+  for(const z of zombies){
+
+    let dx = player.x - z.x;
+    let dy = player.y - z.y;
+    let d = Math.hypot(dx,dy);
+
+    if(d > 0){
+      z.x += (dx/d)*z.speed;
+      z.y += (dy/d)*z.speed;
+    }
+
+    if(d < 25){
+      player.hp -= 0.05;
+    }
+  }
+}
