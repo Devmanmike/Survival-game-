@@ -1,0 +1,54 @@
+import { player } from "./player.js";
+import { zombies } from "./zombies.js";
+
+const TILE = 500;
+const chunks = {};
+
+export function initWorld(){}
+
+export function generateChunk(cx,cy){
+  const key = cx+","+cy;
+  if(chunks[key]) return;
+
+  chunks[key] = {
+    houses:[
+      {
+        x:cx*TILE + Math.random()*TILE,
+        y:cy*TILE + Math.random()*TILE,
+        w:220,
+        h:220
+      }
+    ]
+  };
+
+  zombies.push({
+    x:cx*TILE + Math.random()*TILE,
+    y:cy*TILE + Math.random()*TILE,
+    hp:100,
+    speed:1.2
+  });
+}
+
+export function updateWorld(){
+  let cx = Math.floor(player.x/TILE);
+  let cy = Math.floor(player.y/TILE);
+
+  for(let y=-1;y<=1;y++){
+    for(let x=-1;x<=1;x++){
+      generateChunk(cx+x,cy+y);
+    }
+  }
+}
+
+export function drawWorld(){
+  const { ctx } = await import("../core/game.js");
+
+  for(const k in chunks){
+    const c = chunks[k];
+
+    for(const h of c.houses){
+      ctx.fillStyle = "#444";
+      ctx.fillRect(h.x,h.y,h.w,h.h);
+    }
+  }
+}
