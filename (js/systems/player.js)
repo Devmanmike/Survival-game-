@@ -1,0 +1,11 @@
+export const player = {
+  x:0,y:0,
+  hp:100,
+  speed:4,
+  angle:0
+};
+
+export function initPlayer(){
+  player.x = 0;
+  player.y = 0;
+}
